@@ -12,12 +12,12 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false
       },
-      quantity: {
-          type: DataTypes.Integer,
+      quantity:{
+          type: DataTypes.INTEGER,
           allowNull: false
       },
       select: {
-          type: DataTypes.Boolean,
+          type: DataTypes.BOOLEAN,
           allowNull: false,
           defaultValue: true
       }
