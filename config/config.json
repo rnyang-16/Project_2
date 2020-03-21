@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "p0clasa1sr8n75ru",
-    "password": "ly1xgihmwf78o41x",
-    "database": "nu6nxajm0xnzjx1j",
-    "host": "k2fqe1if4c7uowsh.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "root",
+    "password": "rootpass",
+    "database": "passport_demo",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
