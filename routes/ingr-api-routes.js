@@ -8,7 +8,7 @@ module.exports = function(app) {
     });
   });
 
-//   returns single ingredient
+  //   returns single ingredient
   app.get("/api/ingredients/:id", isAuthenticated, function(req, res) {
     db.ingredients
       .findOne({
@@ -21,14 +21,14 @@ module.exports = function(app) {
       });
   });
 
-//   updates ingredient to database
-  app.post("api/ingredients", isAuthenticated, function(req,res){
-      db.ingredients.create(req.body).then(function(dbIngred){
-          res.json(dbIngred);
-      })
-  })
+  //   updates ingredient to database
+  app.post("api/ingredients", isAuthenticated, function(req, res) {
+    db.ingredients.create(req.body).then(function(dbIngred) {
+      res.json(dbIngred);
+    });
+  });
 
-//   deletes single ingredeient
+  //   deletes single ingredeient
   app.delete("/api/ingredients/:id", isAuthenticated, function(req, res) {
     db.ingredients
       .destroy({
