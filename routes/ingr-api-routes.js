@@ -1,13 +1,15 @@
 var db = require("../models");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-  app.get("api/ingredients", function(req, res) {
+  app.get("/api/ingredients", isAuthenticated, function(req, res) {
     db.ingredients.findAll({}).then(function(dbIngred) {
       res.json(dbIngred);
     });
   });
 
-  app.get("/api/ingredients/:id", function(req, res) {
+  //   returns single ingredient
+  app.get("/api/ingredients/:id", isAuthenticated, function(req, res) {
     db.ingredients
       .findOne({
         where: {
@@ -19,7 +21,15 @@ module.exports = function(app) {
       });
   });
 
-  app.delete("/api/ingredients/:id", function(req, res) {
+  //   updates ingredient to database
+  app.post("api/ingredients", isAuthenticated, function(req, res) {
+    db.ingredients.create(req.body).then(function(dbIngred) {
+      res.json(dbIngred);
+    });
+  });
+
+  //   deletes single ingredeient
+  app.delete("/api/ingredients/:id", isAuthenticated, function(req, res) {
     db.ingredients
       .destroy({
         where: {
