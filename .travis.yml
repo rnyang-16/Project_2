@@ -5,7 +5,7 @@ branches:
     - master
 cache:
   directories:
-    - node_modules
+    # - node_modules
 before_install:
   # - mysql -e 'CREATE DATABASE testdb;'
 #  - mysql -e 'CREATE DATABASE testdb;'

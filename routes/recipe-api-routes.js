@@ -21,7 +21,7 @@ module.exports = function(app) {
       });
   });
 
-  //   updates recipe to database
+  //   add recipe to database
   app.post("api/recipe", isAuthenticated, function(req, res) {
     db.ingredients.create(req.body).then(function(dbIngred) {
       res.json(dbIngred);

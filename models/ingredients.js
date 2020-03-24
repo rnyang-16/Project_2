@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Ingredients = sequelize.define("Ingredients", {
+  var ingredients = sequelize.define("ingredients", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,5 +25,5 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: true
     }
   });
-  return Ingredients;
+  return ingredients;
 };
