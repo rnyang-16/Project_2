@@ -17,6 +17,8 @@ function updatePage(RecipeData) {
   // Get from the form the number of results to display
   console.log(RecipeData);
   // TODO: fill in the page with RecipeData
+  $(".results").empty();
+  createCard(RecipeData);
 }
 
 function buildQueryURL() {
@@ -39,3 +41,35 @@ function buildQueryURL() {
   console.log(queryURL + $.param(queryParams));
   return queryURL + $.param(queryParams);
 }
+
+cardTemplate = Handlebars.compile(
+  `<div class="card">
+    <div class="row">
+        <div class="col s6">
+            <img class="materialboxed" src="{{image}}"></img>
+            <h6>{{title}}</h6>
+        </div>
+        <div class="col s3">
+          <h6>Used Ingredients</h6>
+          <ul>
+            {{#each usedIngredients}}
+              <li>{{name}}<li>
+            {{/each}}
+          </ul>
+        </div>
+        <div class="col s3">
+          <h6>Missed Ingredients</h6>
+          <ul>
+            {{#each missedIngredients}}
+              <li>{{name}}</li>
+            {{/each}}
+          </ul>
+        </div>
+    </div>
+  </div>`)
+
+function createCard(recipes){
+  $.each(recipes, function(index, value){
+    $(".results").append(cardTemplate(value));
+    })
+  };
