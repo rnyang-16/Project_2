@@ -10,7 +10,7 @@ module.exports = function(app) {
 
   //   returns single recipe
   app.get("/api/recipe/:id", isAuthenticated, function(req, res) {
-    db.ingredients
+    db.recipe
       .findOne({
         where: {
           id: req.params.id
@@ -23,14 +23,14 @@ module.exports = function(app) {
 
   //   add recipe to database
   app.post("api/recipe", isAuthenticated, function(req, res) {
-    db.ingredients.create(req.body).then(function(dbIngred) {
+    db.recipe.create(req.body).then(function(dbIngred) {
       res.json(dbIngred);
     });
   });
 
   //   deletes single recipe
   app.delete("/api/recipe/:id", isAuthenticated, function(req, res) {
-    db.ingredients
+    db.recipe
       .destroy({
         where: {
           id: req.params.id
