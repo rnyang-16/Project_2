@@ -23,7 +23,7 @@ module.exports = function(app) {
 
   //   adds ingredient to database
   app.post("/api/ingredients", isAuthenticated, function(req, res) {
-    db.ingredients.create(req.body).then(function(dbIngred){
+    db.ingredients.create(req.body).then(function(dbIngred) {
       res.json(dbIngred);
     });
   });
