@@ -21,6 +21,24 @@ module.exports = function(app) {
       });
   });
 
+  // changes selected value
+  app.put("/api/ingredients/selected/:id", isAuthenticated, function(req, res) {
+    db.ingredients
+      .update({ select: req.body.selected }, { where: req.params.id })
+      .then(function(rowsUpdated) {
+        res.json(rowsUpdated);
+      });
+  });
+
+  // updated quantity of ingredients
+  app.put("/api/ingredients/quantity/:id", isAuthenticated, function(req, res) {
+    db.ingredients
+      .update({ select: req.body.quantity }, { where: req.params.id })
+      .then(function(rowsUpdated) {
+        res.json(rowsUpdated);
+      });
+  });
+
   //   adds ingredient to database
   app.post("/api/ingredients", isAuthenticated, function(req, res) {
     db.ingredients.create(req.body).then(function(dbIngred) {
