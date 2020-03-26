@@ -1,4 +1,9 @@
-form.signup,
+
+
+form.signup {
+  margin-top: 50px;
+};
+
 form.login {
   margin-top: 50px;
-}
+};

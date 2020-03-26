@@ -1,6 +1,45 @@
 <form class= "ingredients">
 
-    <label for="ingredients">Current Ingredients:</label>
-    <input type="text" id = "ingredient" name= "name">
+    <label for="title">Ingredient:</label>
+    <input type="text" id = "title" name= "title">
+    <label for ="category">Type of Ingredient:</label>
+    <select id="category" name="category">
+        <option value="Meat">Meat</option>
+        <option value="Vegetable">Vegetable</option>
+        <option value="Fruit">Fruit</option>
+        <option value="Grain">Grain</option>
+        <option value="Dairy">Dairy</option>
+        <option value="other">Other</option>
+    </select>
+    <label for ="quantity">Quantity of Ingredient (in cups)</label>
+    <input type ="number" id = "quantity" name = "quantity" min = ".25" max ="10">
     <button type="submit">Add to the inventory</button>
 </form>
+
+<h1>Current Inventory</h1>
+<div class = "container">
+    <div class = "non-selected">
+        {{#each ingredients}}
+        {{#unless select}}
+        <div class = "ingredient-box">
+            <h3>{{title}}</h3>
+            <p> Category: {{category}}</p>
+            <p>Quantity: {{quantity}} cups</p>
+            <P><button class = "toSelect" data-id = "{{id}}"> Select </button></p>
+        </div>
+        {{/unless}}
+        {{/each}}
+    </div>
+    <div class = "selected">
+         {{#each ingredients}}
+        {{#if select}}
+        <div class = "ingredient-box">
+            <h3>{{title}}</h3>
+            <p> Category: {{category}}</p>
+            <p>Quantity: {{quantity}} cups</p>
+            <P><button class = "toUnselect" data-id ="{{id}}"> Un-Select </button></p>
+        </div>
+        {{/if}}
+        {{/each}}
+    </div>
+</div>

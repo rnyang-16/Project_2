@@ -24,7 +24,7 @@ module.exports = function(app) {
   // changes selected value
   app.put("/api/ingredients/selected/:id", isAuthenticated, function(req, res) {
     db.ingredients
-      .update({ select: req.body.selected }, { where: req.params.id })
+      .update(req.body, { where: { id: req.params.id } })
       .then(function(rowsUpdated) {
         res.json(rowsUpdated);
       });
@@ -33,7 +33,7 @@ module.exports = function(app) {
   // updated quantity of ingredients
   app.put("/api/ingredients/quantity/:id", isAuthenticated, function(req, res) {
     db.ingredients
-      .update({ select: req.body.quantity }, { where: req.params.id })
+      .update({ quantity: req.body.quantity }, { where: { id: req.params.id } })
       .then(function(rowsUpdated) {
         res.json(rowsUpdated);
       });
@@ -57,5 +57,12 @@ module.exports = function(app) {
       .then(function(dbIngred) {
         res.json(dbIngred);
       });
+  });
+
+  app.get("/api/test", isAuthenticated, function(req, res) {
+    db.ingredients.findAll({ raw: true }).then(function(dbIngred) {
+      var ingredients = { ingredients: dbIngred };
+      res.render("index", ingredients);
+    });
   });
 };

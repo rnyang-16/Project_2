@@ -21,9 +21,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Set Handlebars.
-// var exphbs = require("express-handlebars");
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
 // var routes = require("./controllers/bootlegController.js");

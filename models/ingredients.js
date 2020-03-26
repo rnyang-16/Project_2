@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
     select: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: true
+      defaultValue: false
     }
   });
   return ingredients;
