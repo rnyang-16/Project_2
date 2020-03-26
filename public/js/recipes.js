@@ -134,3 +134,4 @@ function createRecipeDetail(recipe){
   
   $(".results").append(recipeTemplate(recipe));
 };
+

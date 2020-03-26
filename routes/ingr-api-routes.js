@@ -2,7 +2,7 @@ var db = require("../models");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-  app.get("/api/ingredients", isAuthenticated, function(req, res) {
+  app.get("/api/ingredients", function(req, res) {
     db.ingredients.findAll({}).then(function(dbIngred) {
       res.json(dbIngred);
     });
@@ -22,7 +22,7 @@ module.exports = function(app) {
   });
 
   // changes selected value
-  app.put("/api/ingredients/selected/:id", isAuthenticated, function(req, res) {
+  app.put("/api/ingredients/selected/:id", function(req, res) {
     db.ingredients
       .update(req.body, { where: { id: req.params.id } })
       .then(function(rowsUpdated) {
@@ -40,7 +40,7 @@ module.exports = function(app) {
   });
 
   //   adds ingredient to database
-  app.post("/api/ingredients", isAuthenticated, function(req, res) {
+  app.post("/api/ingredients", function(req, res) {
     db.ingredients.create(req.body).then(function(dbIngred) {
       res.json(dbIngred);
     });
@@ -59,7 +59,7 @@ module.exports = function(app) {
       });
   });
 
-  app.get("/api/test", isAuthenticated, function(req, res) {
+  app.get("/api/test", function(req, res) {
     db.ingredients.findAll({ raw: true }).then(function(dbIngred) {
       var ingredients = { ingredients: dbIngred };
       res.render("index", ingredients);
