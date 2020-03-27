@@ -1,18 +1,20 @@
 $(".results").on("click", function(event) {
-  event.preventDefault();
   if(event.target.hasAttribute("recipe_id")) {
+    event.preventDefault();
     recipe_id = event.target.getAttribute("recipe_id");
     var queryURL = buildSearchRecipesByIdURL(recipe_id);
     $.ajax({
       url: queryURL,
       method: "GET"
     }).then(updateRecipesDetail);
+  } else if (event.target.hasAttribute("href")) {
+    window.location.replace(event.target.getAttribute("href"));
   }
 });
 
 $("#search_recipes").on("click", function(event) {
   event.preventDefault();
-  console.log($("#ingredients").val());
+  console.log($("#ingredients").val().trim());
   var queryURL = buildSearchRecipesByIngredientsURL();
   $.ajax({
     url: queryURL,
@@ -76,8 +78,9 @@ cardTemplate = Handlebars.compile(
   `<div class="card">
     <div class="row">
         <div class="col s6">
-            <img class="materialboxed" src="{{image}}"></img>
-            <a recipe_id="{{id}}" herf="{{id}}" class="waves-effect waves-light btn">{{title}}</a>
+            <h6>{{title}}</h6>
+            <img class="materialboxed" width="300" src="{{image}}"></img>
+            <a recipe_id="{{id}}" herf="{{id}}" class="btn">Show Detail</a>
         </div>
         <div class="col s3">
           <h6>Used Ingredients</h6>
@@ -108,29 +111,16 @@ recipeTemplate = Handlebars.compile(
   `<div class="card">
     <div class="row">
         <div class="col s6">
-            <img class="materialboxed" src="{{image}}"></img>
-            <a recipe_id="{{id}}" herf="{{id}}" class="waves-effect waves-light btn">{{title}}</a>
+            <img class="materialboxed" width="300" src="{{image}}"></img>
+            <a href="{{sourceUrl}}" class="btn">Link</a>
         </div>
-        <div class="col s3">
-          <h6>Used Ingredients</h6>
-          <ul>
-            {{#each usedIngredients}}
-              <li>{{name}}<li>
-            {{/each}}
-          </ul>
-        </div>
-        <div class="col s3">
-          <h6>Missed Ingredients</h6>
-          <ul>
-            {{#each missedIngredients}}
-              <li>{{name}}</li>
-            {{/each}}
-          </ul>
+        <div class="col s6">
+          <h6>Summary</h6>
+          {{{summary}}}
         </div>
     </div>
   </div>`)
 
 function createRecipeDetail(recipe){
-  
   $(".results").append(recipeTemplate(recipe));
 };
