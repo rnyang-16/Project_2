@@ -1,5 +1,5 @@
 $(".results").on("click", function(event) {
-  if(event.target.hasAttribute("recipe_id")) {
+  if (event.target.hasAttribute("recipe_id")) {
     event.preventDefault();
     recipe_id = event.target.getAttribute("recipe_id");
     var queryURL = buildSearchRecipesByIdURL(recipe_id);
@@ -14,7 +14,11 @@ $(".results").on("click", function(event) {
 
 $("#search_recipes").on("click", function(event) {
   event.preventDefault();
-  console.log($("#ingredients").val().trim());
+  console.log(
+    $("#ingredients")
+      .val()
+      .trim()
+  );
   var queryURL = buildSearchRecipesByIngredientsURL();
   $.ajax({
     url: queryURL,
@@ -124,13 +128,14 @@ cardTemplate = Handlebars.compile(
         </div>
       </div>
   </div>
-</div>`)
+</div>`
+);
 
-function createCard(recipes){
-  $.each(recipes, function(index, value){
+function createCard(recipes) {
+  $.each(recipes, function(index, value) {
     $(".results").append(cardTemplate(value));
-    })
-};
+  });
+}
 
 recipeTemplate = Handlebars.compile(
   `	<div class="container">
@@ -150,8 +155,9 @@ recipeTemplate = Handlebars.compile(
       </div>
     </div>
   </div>
-</div>`)
+</div>`
+);
 
-function createRecipeDetail(recipe){
+function createRecipeDetail(recipe) {
   $(".results").append(recipeTemplate(recipe));
-};
+}

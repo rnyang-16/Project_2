@@ -5,6 +5,6 @@ $(document).ready(function() {
     $(".member-name").text(data.email);
   });
 
-  const sideNav = document.querySelector('.sidenav');
+  const sideNav = document.querySelector(".sidenav");
   M.Sidenav.init(sideNav, {});
 });
