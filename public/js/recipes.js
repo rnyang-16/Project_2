@@ -79,56 +79,52 @@ function buildSearchRecipesByIngredientsURL() {
 }
 
 cardTemplate = Handlebars.compile(
-  `<div class=container>
+  `	<section class="section center ingre-section">
+  <div class="container">
     <div class="row">
-      <div class="card-panel grey lighten-3">
-        <div class="card-content">
-        <!-- Recipe & Image -->
-          <div class="row">
-            <div class="col s12 m12 l12">
-              <div class="card horizontal">
-                <div class="card-image">
-                  <img class="materialboxed" width="300" src="{{image}}"></img>
-                </div>
-                <div class="card-content">
-                  <h6 class=header>{{title}}</h6>
-                </div>
-                <div class="card-action">
-                  <a recipe_id="{{id}}" herf="{{id}}" class="btn">Show Detail</a>
-                </div>
-              </div>
-            </div>
-            <!-- Used Ingredients Card -->
-            <div class="col s6 m6 l6">
-              <div class="card horizontal">
-                <div class="card-content">
-                  <h6>Used Ingredients</h6>
-                  <ul>
-                    {{#each usedIngredients}}
-                    <li>{{name}}<li>
-                    {{/each}}
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!-- Missed Ingredients Card -->
-            <div class="col s6 m6 l6">
-              <div class="card horizontal">
-                <div class="card-content">
-                  <h6>Missed Ingredients</h6>
-                    <ul>
-                      {{#each missedIngredients}}
-                      <li>{{name}}</li>
-                      {{/each}}
-                    </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+<!-- Recipe & Image -->
+      <div class="col s12 m6">
+  <div class="card">
+    <div class="card-image">
+      <img class="materialboxed" width="300" src="{{image}}"></img>
+    </div>
+    <div class="card-content">
+      <h6 class=header>{{title}}</h6>
+    </div>
+    <div class="card-action">
+      <a recipe_id="{{id}}" herf="{{id}}" class="btn">Summary</a>
+    </div>
+    </div>
+</div>
+<!-- Used Ingredients Card -->
+      <div class="col s12 m3">
+        <div class="card-panel">
+  <span class="card-title">Ingredients Used</span>
+  <div class="card-content">
+    <ul>
+      {{#each usedIngredients}}
+      <li>{{name}}<li>
+      {{/each}}
+    </ul>
+  </div>
         </div>
+</div>
+<!-- Missed Ingredients Card -->
+      <div class="col s12 m3">
+  <div class="card-panel">
+    <span class="card-title">Missed Ingredients</span>
+      <div class="card-content">
+      <ul>
+        {{#each missedIngredients}}
+        <li>{{name}}</li>
+        {{/each}}
+        </ul>
       </div>
   </div>
-</div>`
+</div>
+    </div>
+  </div>
+</section>`
 );
 
 function createCard(recipes) {
