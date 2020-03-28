@@ -1,5 +1,5 @@
 $(".results").on("click", function(event) {
-  if(event.target.hasAttribute("recipe_id")) {
+  if (event.target.hasAttribute("recipe_id")) {
     event.preventDefault();
     recipe_id = event.target.getAttribute("recipe_id");
     var queryURL = buildSearchRecipesByIdURL(recipe_id);
@@ -14,7 +14,11 @@ $(".results").on("click", function(event) {
 
 $("#search_recipes").on("click", function(event) {
   event.preventDefault();
-  console.log($("#ingredients").val().trim());
+  console.log(
+    $("#ingredients")
+      .val()
+      .trim()
+  );
   var queryURL = buildSearchRecipesByIngredientsURL();
   $.ajax({
     url: queryURL,
@@ -75,52 +79,81 @@ function buildSearchRecipesByIngredientsURL() {
 }
 
 cardTemplate = Handlebars.compile(
-  `<div class="card">
+  `	<section class="section center ingre-section">
+  <div class="container">
     <div class="row">
-        <div class="col s6">
-            <h6>{{title}}</h6>
-            <img class="materialboxed" width="300" src="{{image}}"></img>
-            <a recipe_id="{{id}}" herf="{{id}}" class="btn">Show Detail</a>
-        </div>
-        <div class="col s3">
-          <h6>Used Ingredients</h6>
-          <ul>
-            {{#each usedIngredients}}
-              <li>{{name}}<li>
-            {{/each}}
-          </ul>
-        </div>
-        <div class="col s3">
-          <h6>Missed Ingredients</h6>
-          <ul>
-            {{#each missedIngredients}}
-              <li>{{name}}</li>
-            {{/each}}
-          </ul>
-        </div>
+<!-- Recipe & Image -->
+      <div class="col s12 m6">
+  <div class="card">
+    <div class="card-image">
+      <img class="materialboxed" width="300" src="{{image}}"></img>
     </div>
-  </div>`)
+    <div class="card-content">
+      <h6 class=header>{{title}}</h6>
+    </div>
+    <div class="card-action">
+      <a recipe_id="{{id}}" herf="{{id}}" class="btn">Summary</a>
+    </div>
+    </div>
+</div>
+<!-- Used Ingredients Card -->
+      <div class="col s12 m3">
+        <div class="card-panel">
+  <span class="card-title">Ingredients Used</span>
+  <div class="card-content">
+    <ul>
+      {{#each usedIngredients}}
+      <li>{{name}}<li>
+      {{/each}}
+    </ul>
+  </div>
+        </div>
+</div>
+<!-- Missed Ingredients Card -->
+      <div class="col s12 m3">
+  <div class="card-panel">
+    <span class="card-title">Missed Ingredients</span>
+      <div class="card-content">
+      <ul>
+        {{#each missedIngredients}}
+        <li>{{name}}</li>
+        {{/each}}
+        </ul>
+      </div>
+  </div>
+</div>
+    </div>
+  </div>
+</section>`
+);
 
-function createCard(recipes){
-  $.each(recipes, function(index, value){
+function createCard(recipes) {
+  $.each(recipes, function(index, value) {
     $(".results").append(cardTemplate(value));
-    })
-};
+  });
+}
 
 recipeTemplate = Handlebars.compile(
-  `<div class="card">
-    <div class="row">
-        <div class="col s6">
-            <img class="materialboxed" width="300" src="{{image}}"></img>
-            <a href="{{sourceUrl}}" class="btn">Link</a>
-        </div>
-        <div class="col s6">
+  `	<div class="container">
+  <div class="col s12 m12 l12">
+    <div class="card horizontal grey lighten-3">
+      <div class="card-image">
+        <img class="materialboxed" width="300" src="{{image}}"></img>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
           <h6>Summary</h6>
           {{{summary}}}
         </div>
+        <div class="card-action">
+          <a href="{{sourceUrl}}" class="btn">Link</a>
+        </div>
+      </div>
     </div>
-  </div>`)
+  </div>
+</div>`
+);
 
-function createRecipeDetail(recipe){
+function createRecipeDetail(recipe) {
   $(".results").append(recipeTemplate(recipe));
-};
+}
