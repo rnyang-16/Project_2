@@ -2,3 +2,27 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+.main-container {
+  padding: 2em;
+}
+
+.form-container {
+  padding: 1em;
+}
+
+.navbar-fixed  {
+  background: url(food.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 700px;
+}
+@media screen and (max-width: 670px){
+  .navbar-fixed {
+    min-height: 500px;
+  }
+}
+
+.ingredient-search-container {
+  padding: 2em;
+}

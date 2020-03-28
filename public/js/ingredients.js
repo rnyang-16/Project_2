@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   $(".select-ingredient").on("click", function(event) {
     event.preventDefault();
@@ -12,13 +11,11 @@ $(document).ready(function() {
     $.ajax("/api/ingredients/" + id, {
       type: "PUT",
       data: newState
-    }).then(
-      function() {
-        console.log("select", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    }).then(function() {
+      console.log("select", id);
+      // Reload the page to get the updated list
+      location.reload();
+    });
   });
 
   $(".unselect-ingredient").on("click", function(event) {
@@ -33,13 +30,11 @@ $(document).ready(function() {
     $.ajax("/api/ingredients/" + id, {
       type: "PUT",
       data: newState
-    }).then(
-      function() {
-        console.log("unselect", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    }).then(function() {
+      console.log("unselect", id);
+      // Reload the page to get the updated list
+      location.reload();
+    });
   });
 
   $(".create-form").on("submit", function(event) {
@@ -47,22 +42,26 @@ $(document).ready(function() {
     event.preventDefault();
 
     var newIngredient = {
-      title: $("#ingredient_name").val().trim(),
-      category: $("#ingredient_category").val().trim(),
-      quantity: $("#ingredient_quantity").val().trim(),
+      title: $("#ingredient_name")
+        .val()
+        .trim(),
+      category: $("#ingredient_category")
+        .val()
+        .trim(),
+      quantity: $("#ingredient_quantity")
+        .val()
+        .trim()
     };
 
     // Send the POST request.
     $.ajax("/api/ingredients", {
       type: "POST",
       data: newIngredient
-    }).then(
-      function() {
-        console.log("created new ingredient");
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    }).then(function() {
+      console.log("created new ingredient");
+      // Reload the page to get the updated list
+      location.reload();
+    });
   });
 
   $(".delete-ingredient").on("click", function(event) {
@@ -71,12 +70,10 @@ $(document).ready(function() {
     // Send the DELETE request.
     $.ajax("/api/ingredients/" + id, {
       type: "DELETE"
-    }).then(
-      function() {
-        console.log("deleted ingredient", id);
-        // Reload the page to get the updated list
-        location.reload();
-      }
-    );
+    }).then(function() {
+      console.log("deleted ingredient", id);
+      // Reload the page to get the updated list
+      location.reload();
+    });
   });
 });

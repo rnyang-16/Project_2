@@ -1,72 +1,80 @@
-<div class="container">
-    <div class="row">
-        <div class="col s4">
-            <h6>Unselected Ingredients</h6>
-            <ul class="list-group">
-            {{#each ingredients}}
-                {{#unless this.dataValues.select}}
-                <li class="list-group-item">
-                    {{this.dataValues.title}} {{this.dataValues.category}} {{this.dataValues.quantity}}
-                </li>
-                <li class="list-group-item">
-                    <button class="select-ingredient btn-small " data-id="{{this.dataValues.id}}">
-                    Select
-                    </button>
-                    <button class="delete-ingredient btn-small " data-id="{{this.dataValues.id}}">
-                    Delete
-                    </button>
-                </li>
-                {{/unless}}
-            {{/each}}
-            </ul>
-        </div>
-        <div class="col s4">
-        <h6>Add an Ingredient</h6>
-        <form class="create-form">
-            <div class="form-group">
-                <label for="ingredient_name">Name:</label>
-                <input type="text" value="apples" id="ingredient_name" name="ingredient_name">
-                <label for="ingredient_category">Category:</label>
-                <input type="text" value="fruits" id="ingredient_category" name="ingredient_category">
-                <label for="ingredient_quantity">Quantity:</label>
-                <p class="range-field">
-                    <input type="range" value="1" id="ingredient_quantity" min="1" max="100" name="ingredient_quantity">
-                </p>
+<div class="main-container">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m4 l4">
+                <div class="card-panel grey lighten-3">
+                    <h5>Unselected Ingredients</h5>
+                    <ul class="list-group">
+                        {{#each ingredients}}
+                        {{#unless this.dataValues.select}}
+                        <li class="list-group-item">
+                            {{this.dataValues.title}} {{this.dataValues.category}} {{this.dataValues.quantity}}
+                        </li>
+                        <li class="list-group-item">
+                            <button class="select-ingredient btn waves-effect waves-light red btn-small"
+                                data-id="{{this.dataValues.id}}">Select</button>
+                            <button class="delete-ingredient btn waves-effect waves-light red btn-small"
+                                data-id="{{this.dataValues.id}}">Delete</button>
+                        </li>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Add</button>
-            <button id="search_recipes" class="btn btn-primary"> Search Recipes</button>
-        </form>
+            <div class="col s12 m4 l4">
+                <div class="card-panel grey lighten-3">
+                    <h5>Add an Ingredient</h5>
+                    <form class="create-form">
+                        <div class="form-group">
+                            <label for="ingredient_name">Name:</label>
+                            <input type="text" value="apples" id="ingredient_name" name="ingredient_name">
+                            <label for="ingredient_category">Category:</label>
+                            <input type="text" value="fruits" id="ingredient_category" name="ingredient_category">
+                            <label for="ingredient_quantity">Quantity:</label>
+                            <p class="range-field">
+                                <input type="range" value="1" id="ingredient_quantity" min="1" max="100"
+                                    name="ingredient_quantity">
+                            </p>
+                        </div>
+                        <button id="submit"
+                            class="delete-ingredient btn waves-effect waves-light red btn-primary">Add</button>
+                        <button id="search_recipes"
+                            class="delete-ingredient btn waves-effect waves-light red btn-primary">Search
+                            Recipes</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col s12 m4 l4">
+                <div class="card-panel grey lighten-3">
+                    <h5>Selected Ingredients</h5>
+                    <ul class="list-group">
+                        {{#each ingredients}}
+                        {{#if this.dataValues.select}}
+                        <li class="list-group-item">
+                            {{this.dataValues.title}} {{this.dataValues.category}} {{this.dataValues.quantity}}
+                        </li>
+                        <li class="list-group-item">
+                            <button class="unselect-ingredient btn waves-effect waves-light red btn-small"
+                                data-id="{{this.dataValues.id}}">Unselect</button>
+                            <button class="delete-ingredient btn waves-effect waves-light red btn-small"
+                                data-id="{{this.dataValues.id}}">Delete</button>
+                        </li>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div class="col s4">
-            <h6>Selected Ingredients</h6>
-            <ul class="list-group">
-            {{#each ingredients}}
-                {{#if this.dataValues.select}}
-                <li class="list-group-item">
-                    {{this.dataValues.title}} {{this.dataValues.category}} {{this.dataValues.quantity}}
-                </li>
-                <li class="list-group-item">
-                    <button class="unselect-ingredient btn-small " data-id="{{this.dataValues.id}}">
-                    Unselect
-                    </button>
-                    <button class="delete-ingredient btn-small " data-id="{{this.dataValues.id}}">
-                    Delete
-                    </button>
-                </li>
-                {{/if}}
-            {{/each}}
-            </ul>
-        </div>   
-    </div>
-    
-    <div style="display: none;">
-        <input type="text" class="form-control" id="ingredients" name="ingredients" value="
+
+        <div style="display: none;">
+            <input type="text" class="form-control" id="ingredients" name="ingredients" value="
             {{#each ingredients}}
                 {{#if this.dataValues.select}}
                     {{this.dataValues.title}},
                 {{/if}}
             {{/each}}
-        "/>
+        " />
+        </div>
+        <div class="results"></div>
     </div>
-    <div class="results"></div>
 </div>

@@ -1,36 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
-		<title>Bootleg Cooking</title>
-		<!-- CSS -->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-		{{!-- <link href="stylesheets/style.css" rel="stylesheet"> --}}
-	</head>
-	<body>
-		<nav class="navbar navbar-default">
+	<title>Bootleg Cooking</title>
+	<!-- CSS -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link href="stylesheets/style.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="navbar-fixed">
+		<nav class="red">
 			<div class="container">
-			<div class="navbar-header">
-				
-				<a class="navbar-brand right" href="/logout">
-				Logout
-				</a>
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
-					<li><a href="index">Ingredients</a></li>
-					<li><a href="search">Custom Search</a></li>
-				</ul>
-				<div class="right"> Welcome <span class="member-name"></span> &nbsp;&nbsp; </div>
-			</div>
+				<div class="nav-wrapper">
+					<div class="bg-image"></div>
+					<a href="#!" class="brand-logo">Bootleg Cooking</a>
+					<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+					<ul class="right hide-on-med-and-down">
+						<li>
+							<div class="navbar-brand"><a href="index"><span class="material-icons"> house </span></a>
+							</div>
+						</li>
+						<li>
+							<div class="navbar-brand"><a href="search"><span class="material-icons"> search </span></a>
+							</div>
+						</li>
+						<li>
+							<a class="navbar-brand" href="#"><span class="material-icons">account_circle</span> <span
+									class="member-name center"></span></a>
+						</li>
+						<li>
+							<a class="navbar-brand" href="/logout">
+								<span class="material-icons"> input </span>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+
+
+
 			</div>
 		</nav>
-		{{{ body }}}
-	</body>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript" src="js/third_party/materialize.min.js"></script>
-	<script type="text/javascript" src="js/third_party/handlebars-v4.7.3.js"></script>
-	<script type="text/javascript" src="js/ingredients.js"></script>
-	<script type="text/javascript" src="js/members.js"></script>
-	<script type="text/javascript" src="js/recipes.js"></script>
+	</div>
+
+
+
+
+
+	<ul class="sidenav" id="mobile-demo">
+		<li>
+			<a href="index">Ingredients</a>
+		</li>
+		<li>
+			<a href="search">Custom Search</a>
+		</li>
+		<li>
+			<div class="member-name center"></div>
+		</li>
+		<li>
+			<a class="navbar-brand" href="/logout">
+				Logout
+			</a>
+		</li>
+	</ul>
+	</div>
+	{{{ body }}}
+	<footer class="section red darken-2 white-text center">
+		<p class="flow-text">Bootleg Cooking Corp. &copy; 2020</p>
+	</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/third_party/materialize.min.js"></script>
+<script type="text/javascript" src="js/third_party/handlebars-v4.7.3.js"></script>
+<script type="text/javascript" src="js/ingredients.js"></script>
+<script type="text/javascript" src="js/members.js"></script>
+<script type="text/javascript" src="js/recipes.js"></script>
+
 </html>
