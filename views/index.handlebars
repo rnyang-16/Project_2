@@ -11,12 +11,10 @@
                             {{this.dataValues.title}} {{this.dataValues.category}} {{this.dataValues.quantity}}
                         </li>
                         <li class="list-group-item">
-                            <button class="select-ingredient btn-small " data-id="{{this.dataValues.id}}">
-                                Select
-                            </button>
-                            <button class="delete-ingredient btn-small " data-id="{{this.dataValues.id}}">
-                                Delete
-                            </button>
+                            <button class="select-ingredient btn waves-effect waves-light red btn-small"
+                                data-id="{{this.dataValues.id}}">Select</button>
+                            <button class="delete-ingredient btn waves-effect waves-light red btn-small"
+                                data-id="{{this.dataValues.id}}">Delete</button>
                         </li>
                         {{/unless}}
                         {{/each}}
@@ -38,8 +36,11 @@
                                     name="ingredient_quantity">
                             </p>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add</button>
-                        <button id="search_recipes" class="btn btn-primary"> Search Recipes</button>
+                        <button id="submit"
+                            class="delete-ingredient btn waves-effect waves-light red btn-primary">Add</button>
+                        <button id="search_recipes"
+                            class="delete-ingredient btn waves-effect waves-light red btn-primary">Search
+                            Recipes</button>
                     </form>
                 </div>
             </div>
@@ -53,12 +54,10 @@
                             {{this.dataValues.title}} {{this.dataValues.category}} {{this.dataValues.quantity}}
                         </li>
                         <li class="list-group-item">
-                            <button class="unselect-ingredient btn-small " data-id="{{this.dataValues.id}}">
-                                Unselect
-                            </button>
-                            <button class="delete-ingredient btn-small " data-id="{{this.dataValues.id}}">
-                                Delete
-                            </button>
+                            <button class="unselect-ingredient btn waves-effect waves-light red btn-small"
+                                data-id="{{this.dataValues.id}}">Unselect</button>
+                            <button class="delete-ingredient btn waves-effect waves-light red btn-small"
+                                data-id="{{this.dataValues.id}}">Delete</button>
                         </li>
                         {{/if}}
                         {{/each}}

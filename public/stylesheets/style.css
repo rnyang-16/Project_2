@@ -15,10 +15,14 @@ form.login {
   background: url(food.jpg);
   background-size: cover;
   background-position: center;
-  min-height: 600px;
+  min-height: 700px;
 }
 @media screen and (max-width: 670px){
   .navbar-fixed {
     min-height: 500px;
   }
+}
+
+.ingredient-search-container {
+  padding: 2em;
 }
