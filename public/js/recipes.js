@@ -63,7 +63,7 @@ function buildSearchRecipesByIngredientsURL() {
 
   // Begin building an object to contain our API call's query parameters
   // Set the API key
-  var queryParams = { apiKey: "464c61bf28e446659ccf514ecb520d77" };
+  var queryParams = { apiKey: "b25b2f9c74ef48e7b334bca735410a8f" };
 
   // Grab text the user typed into the search input, add to the queryParams object
   queryParams.ingredients = $("#ingredients")
