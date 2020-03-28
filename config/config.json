@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "101ruBBish10$",
+    "password": "password",
     "database": "recipes",
     "host": "127.0.0.1",
     "dialect": "mysql"
