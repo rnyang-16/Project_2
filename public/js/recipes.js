@@ -75,31 +75,56 @@ function buildSearchRecipesByIngredientsURL() {
 }
 
 cardTemplate = Handlebars.compile(
-  `<div class="card">
+  `<div class=container>
     <div class="row">
-        <div class="col s6">
-            <h6>{{title}}</h6>
-            <img class="materialboxed" width="300" src="{{image}}"></img>
-            <a recipe_id="{{id}}" herf="{{id}}" class="btn">Show Detail</a>
+      <div class="card-panel grey lighten-3">
+        <div class="card-content">
+        <!-- Recipe & Image -->
+          <div class="row">
+            <div class="col s12 m12 l12">
+              <div class="card horizontal">
+                <div class="card-image">
+                  <img class="materialboxed" width="300" src="{{image}}"></img>
+                </div>
+                <div class="card-content">
+                  <h6 class=header>{{title}}</h6>
+                </div>
+                <div class="card-action">
+                  <a recipe_id="{{id}}" herf="{{id}}" class="btn">Show Detail</a>
+                </div>
+              </div>
+            </div>
+            <!-- Used Ingredients Card -->
+            <div class="col s6 m6 l6">
+              <div class="card horizontal">
+                <div class="card-content">
+                  <h6>Used Ingredients</h6>
+                  <ul>
+                    {{#each usedIngredients}}
+                    <li>{{name}}<li>
+                    {{/each}}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Missed Ingredients Card -->
+            <div class="col s6 m6 l6">
+              <div class="card horizontal">
+                <div class="card-content">
+                  <h6>Missed Ingredients</h6>
+                    <ul>
+                      {{#each missedIngredients}}
+                      <li>{{name}}</li>
+                      {{/each}}
+                    </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col s3">
-          <h6>Used Ingredients</h6>
-          <ul>
-            {{#each usedIngredients}}
-              <li>{{name}}<li>
-            {{/each}}
-          </ul>
-        </div>
-        <div class="col s3">
-          <h6>Missed Ingredients</h6>
-          <ul>
-            {{#each missedIngredients}}
-              <li>{{name}}</li>
-            {{/each}}
-          </ul>
-        </div>
-    </div>
-  </div>`)
+      </div>
+  </div>
+</div>`)
 
 function createCard(recipes){
   $.each(recipes, function(index, value){
@@ -108,18 +133,24 @@ function createCard(recipes){
 };
 
 recipeTemplate = Handlebars.compile(
-  `<div class="card">
-    <div class="row">
-        <div class="col s6">
-            <img class="materialboxed" width="300" src="{{image}}"></img>
-            <a href="{{sourceUrl}}" class="btn">Link</a>
-        </div>
-        <div class="col s6">
+  `	<div class="container">
+  <div class="col s12 m12 l12">
+    <div class="card horizontal grey lighten-3">
+      <div class="card-image">
+        <img class="materialboxed" width="300" src="{{image}}"></img>
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
           <h6>Summary</h6>
           {{{summary}}}
         </div>
+        <div class="card-action">
+          <a href="{{sourceUrl}}" class="btn">Link</a>
+        </div>
+      </div>
     </div>
-  </div>`)
+  </div>
+</div>`)
 
 function createRecipeDetail(recipe){
   $(".results").append(recipeTemplate(recipe));
