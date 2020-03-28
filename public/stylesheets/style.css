@@ -7,6 +7,10 @@ form.login {
   padding: 2em;
 }
 
+.form-container {
+  padding: 1em;
+}
+
 .navbar-fixed  {
   background: url(food.jpg);
   background-size: cover;
