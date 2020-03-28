@@ -2,3 +2,19 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+
+.main-container {
+  padding: 2em;
+}
+
+.navbar-fixed  {
+  background: url(food.jpg);
+  background-size: cover;
+  background-position: center;
+  min-height: 600px;
+}
+@media screen and (max-width: 670px){
+  .navbar-fixed {
+    min-height: 500px;
+  }
+}
